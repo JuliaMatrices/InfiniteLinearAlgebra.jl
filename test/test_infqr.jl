@@ -288,4 +288,10 @@ import SemiseparableMatrices: AlmostBandedLayout, VcatAlmostBandedLayout
         b = [1; 2; 3; zeros(∞)]
         @test (qr(A) \ b) ≈ (ul(A) \ b)
     end
+
+    @testset "rdiv!" begin
+        L = BandedMatrix(-1 => Ones(∞), 0 => Ones(∞))
+
+        [1 Zeros(1,∞)] / LowerTriangular(L)
+    end
 end
